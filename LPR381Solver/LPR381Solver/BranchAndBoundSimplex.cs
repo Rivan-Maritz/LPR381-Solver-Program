@@ -25,7 +25,7 @@ namespace LPR381Solver
             }
         }
 
-        public static double[] solve(double[] c, double[,] A, double[] b, string[] relations, string[] signRestrictions, bool isMax, TextWriter output)
+        public static SimplexResult solve(double[] c, double[,] A, double[] b, string[] relations, string[] signRestrictions, bool isMax, TextWriter output)
         {
             int n = c.Length;
 
@@ -51,7 +51,8 @@ namespace LPR381Solver
             stack.Push(root);
 
             double[] bestSolution = null;
-            double bestObjective = isMax ? double.NegativeInfinity : double.PositiveInfinity; 
+            double bestObjective = isMax ? double.NegativeInfinity : double.PositiveInfinity;
+            SimplexResult bestResult = null; 
             int nodeCount = 0;
 
             output.WriteLine("-----> Starting Branch and Bound Simplex Solver ------->");
@@ -72,7 +73,7 @@ namespace LPR381Solver
                     // Solve the relaxation for this node
                     result = PrimalSimplex.Solve(c, currentA, current.B.ToArray(), current.Relations.ToArray(), isMax);   
                 }
-                catch (InvalidOperationException ex) when (ex.Message.Contains("infeasible"))
+                   catch (InvalidOperationException ex) when (ex.Message.Contains("infeasible"))
                 {
                     output.WriteLine("Node is infeasible. Pruning Branch.");
                     continue;
@@ -82,6 +83,7 @@ namespace LPR381Solver
                     output.WriteLine("Node is unbounded. The model is unbounded.");
                     throw;
                 }
+                
 
                 double objective = result.GetOriginalOptimalValue();
                 double[] solution = Extraction(result, n);
@@ -109,6 +111,7 @@ namespace LPR381Solver
                     // Solution is integer-feasible and better than current best.
                     bestSolution = solution;
                     bestObjective = objective;
+                    bestResult = result;
 
                     output.WriteLine($"[New Best Integer Solution Found] Z = {Math.Round(bestObjective, 3)}");
                 }
@@ -148,7 +151,7 @@ namespace LPR381Solver
                 output.WriteLine($"Optimal Integer Objective Z = {Math.Round(bestObjective, 3)}");
             }
 
-            return bestSolution;
+            return bestResult;
         }
 
         private static double[,] RowsToMatrix(List<double[]> rows, int n)

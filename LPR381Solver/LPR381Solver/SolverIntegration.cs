@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace LPR381Solver
@@ -50,7 +51,11 @@ namespace LPR381Solver
 
         public static SolverRegistry CreateDefault()
         {
-            return new SolverRegistry(new IModelSolver[] { new PrimalSimplexAdapter() });
+             return new SolverRegistry(new IModelSolver[] 
+            { 
+                new PrimalSimplexAdapter(),
+                new BranchAndBoundSimplexAdapter()
+            });
         }
 
         public SolverExecution Solve(string algorithmName, LinearProgrammingModel model, CanonicalForm canonicalForm)
@@ -125,4 +130,85 @@ namespace LPR381Solver
             };
         }
     }
+
+        public sealed class BranchAndBoundSimplexAdapter : IModelSolver
+    {
+        public string Name => AlgorithmNames.BranchAndBoundSimplex;
+
+        public SolverExecution Solve(LinearProgrammingModel model, CanonicalForm canonicalForm)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+            if (canonicalForm == null)
+                throw new ArgumentNullException(nameof(canonicalForm));
+
+            // Extract input arrays for only decision variables from the canonical form
+            int rows = canonicalForm.RightHandSides.Length;
+            int columns = canonicalForm.DecisionVariableCount;
+            var a = new double[rows, columns];
+            var c = new double[columns];
+            var b = (double[])canonicalForm.RightHandSides.Clone();
+
+            for (int column = 0; column < columns; column++)
+            {
+                c[column] = canonicalForm.ObjectiveCoefficients[column];
+                for (int row = 0; row < rows; row++)
+                    a[row, column] = canonicalForm.ConstraintMatrix[row, column];
+            }
+
+            // Convert relations and restrictions to the strings expected by the B&B solver
+            string[] relations = canonicalForm.NormalizedRelations
+                .Select(r => r == ConstraintRelation.LessThanOrEqual ? "<=" :
+                             r == ConstraintRelation.GreaterThanOrEqual ? ">=" : "=")
+                .ToArray();
+
+            string[] signRestrictions = canonicalForm.OriginalVariableRestrictions
+                .Select(r => r == VariableRestriction.Integer ? "int" :
+                             r == VariableRestriction.Binary ? "bin" : "+")
+                .ToArray();
+
+            bool isMax = model.ObjectiveSense == ObjectiveSense.Maximize;
+
+            // Capture output logs during B&B execution
+            var outputWriter = new StringWriter();            
+            SimplexResult result = BranchAndBoundSimplex.solve(c, a, b, relations, signRestrictions, isMax, outputWriter);
+
+            if (result == null)
+            {
+                throw new InfeasibleModelException("No integer-feasible solution found.");
+            }
+
+            // Bind metadata to the actual result for the UI
+            result.DecisionVariableNames = canonicalForm.Variables
+                .Take(columns)
+                .Select(v => v.Name)
+                .ToArray();
+            result.OriginalObjectiveValueMultiplier = canonicalForm.OriginalObjectiveValueMultiplier;
+
+            double displayedOptimalValue = result.GetOriginalOptimalValue();
+
+            var report = new SolverRunReport(Name)
+            {
+                Status = "Optimal",
+                Summary = "Optimal integer objective value: " + CanonicalFormFormatter.FormatNumber(displayedOptimalValue) +
+                          "\n\n========================================================================\n" +
+                          "BRANCH & BOUND TREE SEARCH LOG\n" +
+                          "========================================================================\n" +
+                          outputWriter.ToString()
+            };
+
+            // Add the simplex tableaus (iterations) of the optimal node to the report
+            foreach (double[,] tableau in result.Iterations)
+            {
+                report.Iterations.Add(PrimalSimplex.TableauToString(tableau));
+            }
+
+            return new SolverExecution
+            {
+                Report = report,
+                SimplexResult = result
+            };
+        }
+    }
+
 }

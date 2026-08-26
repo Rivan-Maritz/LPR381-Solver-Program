@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cuttingplane.cs" />
+    <Compile Include="BranchAndBoundSimplex.cs" />
     <Compile Include="CanonicalFormConverter.cs" />
     <Compile Include="LinearProgrammingModel.cs" />
     <Compile Include="MainForm.cs">
