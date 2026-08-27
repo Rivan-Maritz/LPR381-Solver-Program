@@ -3,39 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\lpr381solver\\revisedprimalsimplexalgorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|solutionrelative:lpr381solver\\revisedprimalsimplexalgorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\lpr381solver\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|solutionrelative:lpr381solver\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\lpr381solver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|solutionrelative:lpr381solver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|c:\\users\\t.maise\\source\\repos\\lpr381-solver-program\\lpr381solver\\lpr381solver\\cuttingplane.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|solutionrelative:lpr381solver\\cuttingplane.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\lpr381solver\\primalsimplex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|solutionrelative:lpr381solver\\primalsimplex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\lpr381solver\\testfilereader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|solutionrelative:lpr381solver\\testfilereader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\T.Maise\\Downloads\\MainForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\lpr381solver\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|solutionrelative:lpr381solver\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\lpr381solver\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|solutionrelative:lpr381solver\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|c:\\users\\t.maise\\source\\repos\\lpr381-solver-program\\lpr381solver\\lpr381solver\\cuttingplaneadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|solutionrelative:lpr381solver\\cuttingplaneadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -45,121 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TestFileReader.cs",
-              "DocumentMoniker": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\TestFileReader.cs",
-              "RelativeDocumentMoniker": "LPR381Solver\\TestFileReader.cs",
-              "ToolTip": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\TestFileReader.cs",
-              "RelativeToolTip": "LPR381Solver\\TestFileReader.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAgwF8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-24T20:23:57.424Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Cuttingplane.cs",
-              "DocumentMoniker": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\Cuttingplane.cs",
-              "RelativeDocumentMoniker": "LPR381Solver\\Cuttingplane.cs",
-              "ToolTip": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\Cuttingplane.cs",
-              "RelativeToolTip": "LPR381Solver\\Cuttingplane.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAA0wJgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-24T19:03:54.282Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RevisedPrimalSimplexAlgorithm.cs",
-              "DocumentMoniker": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\RevisedPrimalSimplexAlgorithm.cs",
-              "RelativeDocumentMoniker": "LPR381Solver\\RevisedPrimalSimplexAlgorithm.cs",
-              "ToolTip": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\RevisedPrimalSimplexAlgorithm.cs",
-              "RelativeToolTip": "LPR381Solver\\RevisedPrimalSimplexAlgorithm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Title": "CuttingPlaneAdapter.cs",
+              "DocumentMoniker": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\CuttingPlaneAdapter.cs",
+              "RelativeDocumentMoniker": "LPR381Solver\\CuttingPlaneAdapter.cs",
+              "ToolTip": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\CuttingPlaneAdapter.cs",
+              "RelativeToolTip": "LPR381Solver\\CuttingPlaneAdapter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-24T16:43:05.894Z",
+              "WhenOpened": "2026-08-27T10:10:38.264Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainForm.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\MainForm.Designer.cs",
-              "RelativeDocumentMoniker": "LPR381Solver\\MainForm.Designer.cs",
-              "ToolTip": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\MainForm.Designer.cs",
-              "RelativeToolTip": "LPR381Solver\\MainForm.Designer.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-19T12:18:29.633Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\Program.cs",
-              "RelativeDocumentMoniker": "LPR381Solver\\Program.cs",
-              "ToolTip": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\Program.cs",
-              "RelativeToolTip": "LPR381Solver\\Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-19T11:30:27.42Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainForm.cs",
-              "DocumentMoniker": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\MainForm.cs",
-              "RelativeDocumentMoniker": "LPR381Solver\\MainForm.cs",
-              "ToolTip": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\MainForm.cs",
-              "RelativeToolTip": "LPR381Solver\\MainForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-19T11:35:51.335Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PrimalSimplex.cs",
-              "DocumentMoniker": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\PrimalSimplex.cs",
-              "RelativeDocumentMoniker": "LPR381Solver\\PrimalSimplex.cs",
-              "ToolTip": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\PrimalSimplex.cs",
-              "RelativeToolTip": "LPR381Solver\\PrimalSimplex.cs",
-              "ViewState": "AgIAAN0AAAAAAAAAAAAcwAIBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-19T11:27:04.981Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MainForm.cs",
-              "DocumentMoniker": "C:\\Users\\T.Maise\\Downloads\\MainForm.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\Downloads\\MainForm.cs",
-              "ToolTip": "C:\\Users\\T.Maise\\Downloads\\MainForm.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\Downloads\\MainForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGoBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-24T20:32:37.373Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MainForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\MainForm.cs",
-              "RelativeDocumentMoniker": "LPR381Solver\\MainForm.cs",
-              "ToolTip": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\MainForm.cs [Design]",
-              "RelativeToolTip": "LPR381Solver\\MainForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-19T11:09:17.184Z",
-              "EditorCaption": " [Design]"
             }
           ]
         }

@@ -47,9 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RevisedPrimalSimplexAdapter.cs" />
     <Compile Include="Cuttingplane.cs" />
     <Compile Include="BranchAndBoundSimplex.cs" />
     <Compile Include="CanonicalFormConverter.cs" />
+    <Compile Include="CuttingPlaneAdapter.cs" />
     <Compile Include="LinearProgrammingModel.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -61,6 +63,7 @@
     <Compile Include="ModelOutputWriter.cs" />
     <Compile Include="PrimalSimplex.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="SensitivityAnalysis.cs" />
     <Compile Include="SolverIntegration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RevisedPrimalSimplexAlgorithm.cs" />
@@ -101,6 +104,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\test4_brief_knapsack.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\test5_knapsack.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -33,6 +33,12 @@ namespace LPR381Solver
         private SolverRunReport currentReport;
         private SimplexResult currentResult;
 
+        private DataGridView variableRangeGrid;
+        private DataGridView rhsRangeGrid;
+        private DataGridView dualityGrid;
+
+        private AnalyzeSensitivity sensitivityAnalyzer;
+
         public MainForm()
         {
             solverRegistry = SolverRegistry.CreateDefault();
@@ -165,31 +171,130 @@ namespace LPR381Solver
             iterationPage.Controls.Add(tableauGrid);
             iterationPage.Controls.Add(iterationTopPanel);
 
-            var sensitivityPage = new TabPage("Sensitivity Integration");
+            var sensitivityPage = new TabPage("Sensitivity Analysis");
+
             var sensitivityLayout = new TableLayoutPanel
             {
-                Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 3, Padding = new Padding(10)
+                Dock = DockStyle.Fill,
+                ColumnCount = 2,
+                RowCount = 6,
+                Padding = new Padding(10)
             };
-            sensitivityLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            sensitivityLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            sensitivityLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            sensitivityLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            sensitivityLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
-            sensitivityLayout.Controls.Add(new Label { Text = "B-inverse", Dock = DockStyle.Fill, Font = new Font("Segoe UI", 10F, FontStyle.Bold) }, 0, 0);
-            sensitivityLayout.Controls.Add(new Label { Text = "Shadow prices", Dock = DockStyle.Fill, Font = new Font("Segoe UI", 10F, FontStyle.Bold) }, 1, 0);
+
+            sensitivityLayout.ColumnStyles.Add(
+                new ColumnStyle(SizeType.Percent, 50F));
+
+            sensitivityLayout.ColumnStyles.Add(
+                new ColumnStyle(SizeType.Percent, 50F));
+
+            sensitivityLayout.RowStyles.Add(
+                new RowStyle(SizeType.Absolute, 30F));
+
+            sensitivityLayout.RowStyles.Add(
+                new RowStyle(SizeType.Percent, 25F));
+
+            sensitivityLayout.RowStyles.Add(
+                new RowStyle(SizeType.Absolute, 30F));
+
+            sensitivityLayout.RowStyles.Add(
+                new RowStyle(SizeType.Percent, 25F));
+
+            sensitivityLayout.RowStyles.Add(
+                new RowStyle(SizeType.Percent, 25F));
+
+            sensitivityLayout.RowStyles.Add(
+                new RowStyle(SizeType.Absolute, 40F));
+
             bInverseGrid = CreateReadOnlyGrid();
             shadowPriceGrid = CreateReadOnlyGrid();
-            sensitivityLayout.Controls.Add(bInverseGrid, 0, 1);
-            sensitivityLayout.Controls.Add(shadowPriceGrid, 1, 1);
+
+            variableRangeGrid = CreateReadOnlyGrid();
+            rhsRangeGrid = CreateReadOnlyGrid();
+
+            dualityGrid = CreateReadOnlyGrid();
+
+            sensitivityLayout.Controls.Add(
+                new Label
+                {
+                    Text = "B-Inverse",
+                    Dock = DockStyle.Fill,
+                    Font = new Font("Segoe UI", 10F, FontStyle.Bold)
+                }, 0, 0);
+
+            sensitivityLayout.Controls.Add(
+                new Label
+                {
+                    Text = "Shadow Prices",
+                    Dock = DockStyle.Fill,
+                    Font = new Font("Segoe UI", 10F, FontStyle.Bold)
+                }, 1, 0);
+
+            sensitivityLayout.Controls.Add(
+                bInverseGrid,
+                0,
+                1);
+
+            sensitivityLayout.Controls.Add(
+                shadowPriceGrid,
+                1,
+                1);
+
+            sensitivityLayout.Controls.Add(
+                new Label
+                {
+                    Text = "Variable Sensitivity",
+                    Dock = DockStyle.Fill,
+                    Font = new Font("Segoe UI", 10F, FontStyle.Bold)
+                }, 0, 2);
+
+            sensitivityLayout.Controls.Add(
+                new Label
+                {
+                    Text = "RHS Sensitivity",
+                    Dock = DockStyle.Fill,
+                    Font = new Font("Segoe UI", 10F, FontStyle.Bold)
+                }, 1, 2);
+
+            sensitivityLayout.Controls.Add(
+                variableRangeGrid,
+                0,
+                3);
+
+            sensitivityLayout.Controls.Add(
+                rhsRangeGrid,
+                1,
+                3);
+
+            dualityGrid.Columns.Add("item", "Item");
+            dualityGrid.Columns.Add("value", "Value");
+
+            sensitivityLayout.Controls.Add(
+                dualityGrid,
+                0,
+                4);
+
+            sensitivityLayout.SetColumnSpan(
+                dualityGrid,
+                2);
+
             optimalValueLabel = new Label
             {
-                Text = "Optimal value: -", Dock = DockStyle.Fill,
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                TextAlign = ContentAlignment.MiddleLeft
+                Text = "Optimal Value: -",
+                Dock = DockStyle.Fill,
+                Font = new Font("Segoe UI", 10F, FontStyle.Bold)
             };
-            sensitivityLayout.Controls.Add(optimalValueLabel, 0, 2);
-            sensitivityLayout.SetColumnSpan(optimalValueLabel, 2);
-            sensitivityPage.Controls.Add(sensitivityLayout);
+
+            sensitivityLayout.Controls.Add(
+                optimalValueLabel,
+                0,
+                5);
+
+            sensitivityLayout.SetColumnSpan(
+                optimalValueLabel,
+                2);
+
+            sensitivityPage.Controls.Add(
+                sensitivityLayout);
 
             tabs.TabPages.Add(modelPage);
             tabs.TabPages.Add(iterationPage);
@@ -342,7 +447,23 @@ namespace LPR381Solver
                 iterationSelector.SelectedIndex = currentResult.Iterations.Count - 1;
             PopulateBInverseGrid();
             PopulateShadowPriceGrid();
-            optimalValueLabel.Text = "Optimal value: " + CanonicalFormFormatter.FormatNumber(currentResult.GetOriginalOptimalValue());
+
+            sensitivityAnalyzer =
+                new AnalyzeSensitivity
+                {
+                    OriginalModel = currentModel
+                };
+
+            sensitivityAnalyzer.SolveOriginal();
+
+            PopulateVariableSensitivity();
+            PopulateRHSSensitivity();
+            PopulateDuality();
+
+            optimalValueLabel.Text =
+                "Optimal value: " +
+                CanonicalFormFormatter.FormatNumber(
+                    currentResult.GetOriginalOptimalValue());
         }
 
         private void ResetResultViews()
@@ -355,6 +476,15 @@ namespace LPR381Solver
             bInverseGrid.Rows.Clear();
             shadowPriceGrid.Columns.Clear();
             shadowPriceGrid.Rows.Clear();
+
+            variableRangeGrid?.Columns.Clear();
+            variableRangeGrid?.Rows.Clear();
+
+            rhsRangeGrid?.Columns.Clear();
+            rhsRangeGrid?.Rows.Clear();
+
+            dualityGrid?.Rows.Clear();
+
             optimalValueLabel.Text = "Optimal value: -";
         }
 
@@ -417,6 +547,148 @@ namespace LPR381Solver
             double[] prices = currentResult.GetShadowPrices();
             for (int i = 0; i < prices.Length; i++)
                 shadowPriceGrid.Rows.Add("Constraint " + (i + 1), CanonicalFormFormatter.FormatNumber(prices[i]));
+        }
+
+        private void PopulateVariableSensitivity()
+        {
+            variableRangeGrid.Columns.Clear();
+            variableRangeGrid.Rows.Clear();
+
+            variableRangeGrid.Columns.Add(
+                "Variable",
+                "Variable");
+
+            variableRangeGrid.Columns.Add(
+                "Type",
+                "Type");
+
+            variableRangeGrid.Columns.Add(
+                "Lower",
+                "Lower Bound");
+
+            variableRangeGrid.Columns.Add(
+                "Upper",
+                "Upper Bound");
+
+            for (int i = 0;
+                 i < currentModel.VariableCount;
+                 i++)
+            {
+                try
+                {
+                    Range range;
+                    string type;
+
+                    try
+                    {
+                        range =
+                            sensitivityAnalyzer
+                                .GetBasicVariableRange(i);
+
+                        type = "Basic";
+                    }
+                    catch
+                    {
+                        range =
+                            sensitivityAnalyzer
+                                .GetNonBasicVariableRange(i);
+
+                        type = "Non-Basic";
+                    }
+
+                    variableRangeGrid.Rows.Add(
+                        $"x{i + 1}",
+                        type,
+                        CanonicalFormFormatter.FormatNumber(
+                            range.LowerBound),
+                        CanonicalFormFormatter.FormatNumber(
+                            range.UpperBound));
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        private void PopulateRHSSensitivity()
+        {
+            rhsRangeGrid.Columns.Clear();
+            rhsRangeGrid.Rows.Clear();
+
+            rhsRangeGrid.Columns.Add(
+                "Constraint",
+                "Constraint");
+
+            rhsRangeGrid.Columns.Add(
+                "Lower",
+                "Lower Bound");
+
+            rhsRangeGrid.Columns.Add(
+                "Upper",
+                "Upper Bound");
+
+            for (int i = 0;
+                 i < currentModel.ConstraintCount;
+                 i++)
+            {
+                try
+                {
+                    Range range =
+                        sensitivityAnalyzer
+                            .GetRHSRange(i);
+
+                    rhsRangeGrid.Rows.Add(
+                        $"Constraint {i + 1}",
+                        CanonicalFormFormatter.FormatNumber(
+                            range.LowerBound),
+                        CanonicalFormFormatter.FormatNumber(
+                            range.UpperBound));
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        private void PopulateDuality()
+        {
+            dualityGrid.Rows.Clear();
+
+            try
+            {
+                SensitivityResult dual =
+                    sensitivityAnalyzer
+                        .SolveDualModel();
+
+                string strength =
+                    sensitivityAnalyzer
+                        .CheckDualityStrength();
+
+                dualityGrid.Rows.Add(
+                    "Duality Type",
+                    strength);
+
+                dualityGrid.Rows.Add(
+                    "Primal Objective",
+                    CanonicalFormFormatter.FormatNumber(
+                        currentResult
+                            .GetOriginalOptimalValue()));
+
+                dualityGrid.Rows.Add(
+                    "Dual Objective",
+                    CanonicalFormFormatter.FormatNumber(
+                        dual.ObjectiveValue));
+
+                dualityGrid.Rows.Add(
+                    "Dual Optimal",
+                    dual.IsOptimal);
+            }
+            catch (Exception ex)
+            {
+                dualityGrid.Rows.Add(
+                    "Duality Error",
+                    ex.Message);
+            }
         }
 
         private void SetWorkflowState(bool modelLoaded, bool solved)
