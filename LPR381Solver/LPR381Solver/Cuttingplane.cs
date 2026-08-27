@@ -31,12 +31,24 @@ namespace LPR381Solver
         private const double Eps = 1e-6;
         private const int MaxCuts = 25; // a safety limit so we can't loop forever if something goes wrong
 
+        // Old version, kept so anything already calling this still compiles - it
+        // just calls the new version below and throws away the extra SimplexResult.
+        public static double[] Solve(double[] c, double[,] A, double[] b, string[] relations,
+            string[] signRestrictions, bool isMax, TextWriter output)
+        {
+            return Solve(c, A, b, relations, signRestrictions, isMax, output, out _);
+        }
+
+        // Same as above, but also hands back the SimplexResult from the relaxed LP
+        // that finally gave the all-integer answer. The UI needs this to show the
+        // tableau, B-inverse and shadow prices the same way it does for Primal Simplex.
+        //
         // signRestrictions holds one entry per decision variable, e.g. "int",
         // "bin", "+", "-" or "urs" - in the same order as the objective function.
         // Only variables marked "int" or "bin" are forced to come out as whole
         // numbers here; the rest are allowed to be fractional.
         public static double[] Solve(double[] c, double[,] A, double[] b, string[] relations,
-            string[] signRestrictions, bool isMax, TextWriter output)
+            string[] signRestrictions, bool isMax, TextWriter output, out SimplexResult finalResult)
         {
             // We copy the constraints into lists instead of fixed-size arrays,
             // because every cut we add means one more row - lists make that easy.
@@ -51,6 +63,7 @@ namespace LPR381Solver
             var rhs = b.ToList();
             var rels = relations.ToList();
 
+            finalResult = null;
             int cutCount = 0;
             while (true)
             {
@@ -81,12 +94,14 @@ namespace LPR381Solver
                     for (int j = 0; j < n; j++)
                         output.WriteLine($"x{j + 1} = {Math.Round(solution[j], 3)}");
                     output.WriteLine($"Z = {Math.Round(result.GetOptimalValue(), 3)}");
+                    finalResult = result;
                     return solution;
                 }
 
                 if (cutCount >= MaxCuts)
                 {
                     output.WriteLine("Reached the maximum number of cuts without an integer answer - stopping.");
+                    finalResult = result;
                     return solution;
                 }
 

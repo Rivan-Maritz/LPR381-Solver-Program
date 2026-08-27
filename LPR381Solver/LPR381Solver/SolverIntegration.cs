@@ -50,7 +50,12 @@ namespace LPR381Solver
 
         public static SolverRegistry CreateDefault()
         {
-            return new SolverRegistry(new IModelSolver[] { new PrimalSimplexAdapter() });
+            return new SolverRegistry(new IModelSolver[]
+            {
+        new PrimalSimplexAdapter(),
+        new RevisedPrimalSimplexAdapter(),
+        new CuttingPlaneAdapter()
+            });
         }
 
         public SolverExecution Solve(string algorithmName, LinearProgrammingModel model, CanonicalForm canonicalForm)
