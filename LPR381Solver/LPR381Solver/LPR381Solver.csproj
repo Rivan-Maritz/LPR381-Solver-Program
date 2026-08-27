@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="RevisedPrimalSimplexAdapter.cs" />
     <Compile Include="Cuttingplane.cs" />
+    <Compile Include="BranchAndBoundSimplex.cs" />
     <Compile Include="CanonicalFormConverter.cs" />
     <Compile Include="CuttingPlaneAdapter.cs" />
     <Compile Include="LinearProgrammingModel.cs" />
