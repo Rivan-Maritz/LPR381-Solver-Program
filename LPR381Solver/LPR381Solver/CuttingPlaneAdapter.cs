@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -33,6 +34,52 @@ namespace LPR381Solver
                 .ToArray();
             string[] signRestrictions = GetSignRestrictions(canonicalForm);
             bool isMax = model.ObjectiveSense == ObjectiveSense.Maximize;
+
+            // Binary variables need an upper bound of 1, which nothing else
+            // enforces on its own - without this, Cutting Plane could accept an
+            // integer answer above 1 as "valid" for a bin-restricted variable.
+            var extraRows = new List<double[]>();
+            var extraRhs = new List<double>();
+            var extraRelations = new List<string>();
+            for (int col = 0; col < signRestrictions.Length; col++)
+            {
+                if (signRestrictions[col] == "bin")
+                {
+                    var row = new double[columns];
+                    row[col] = 1;
+                    extraRows.Add(row);
+                    extraRhs.Add(1);
+                    extraRelations.Add("<=");
+                }
+            }
+
+            if (extraRows.Count > 0)
+            {
+                int newRowCount = rows + extraRows.Count;
+                var newA = new double[newRowCount, columns];
+                var newB = new double[newRowCount];
+                var newRelations = new string[newRowCount];
+
+                for (int r = 0; r < rows; r++)
+                {
+                    for (int col = 0; col < columns; col++)
+                        newA[r, col] = a[r, col];
+                    newB[r] = b[r];
+                    newRelations[r] = relations[r];
+                }
+                for (int i = 0; i < extraRows.Count; i++)
+                {
+                    for (int col = 0; col < columns; col++)
+                        newA[rows + i, col] = extraRows[i][col];
+                    newB[rows + i] = extraRhs[i];
+                    newRelations[rows + i] = extraRelations[i];
+                }
+
+                a = newA;
+                b = newB;
+                relations = newRelations;
+                rows = newRowCount;
+            }
 
             string cutLog;
             SimplexResult result;
@@ -88,9 +135,8 @@ namespace LPR381Solver
 
         // Integer/binary restrictions live on canonicalForm.OriginalVariableRestrictions,
         // indexed by the ORIGINAL variable, not the canonical column. A single original
-        // variable can map to one or two canonical columns (e.g. unrestricted variables
-        // get split into a "_pos" and "_neg" column), so we mark every column that
-        // mapping points to.
+        // variable can map to one or two canonical columns, so we mark every column
+        // that mapping points to.
         private static string[] GetSignRestrictions(CanonicalForm canonicalForm)
         {
             var restrictions = new string[canonicalForm.DecisionVariableCount];
