@@ -1,4 +1,5 @@
 <Solution>
-  <Project Path="Member1Verification/Member1Verification.csproj" Id="f88d3122-e44d-4b39-8cc7-f0cc09037b77" />
+  <Folder Name="/Solution Items/" />
   <Project Path="LPR381Solver/LPR381Solver.csproj" Id="cd169f2b-412b-4adf-bba0-2afb13ed26af" />
+  <Project Path="Member1Verification/Member1Verification.csproj" Id="f88d3122-e44d-4b39-8cc7-f0cc09037b77" />
 </Solution>
