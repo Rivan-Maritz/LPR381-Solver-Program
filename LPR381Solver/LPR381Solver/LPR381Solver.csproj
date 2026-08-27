@@ -47,8 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RevisedPrimalSimplexAdapter.cs" />
     <Compile Include="Cuttingplane.cs" />
     <Compile Include="CanonicalFormConverter.cs" />
+    <Compile Include="CuttingPlaneAdapter.cs" />
     <Compile Include="LinearProgrammingModel.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
