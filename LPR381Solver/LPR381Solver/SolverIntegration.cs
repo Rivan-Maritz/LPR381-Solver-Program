@@ -54,7 +54,8 @@ namespace LPR381Solver
              return new SolverRegistry(new IModelSolver[] 
             { 
                 new PrimalSimplexAdapter(),
-                new BranchAndBoundSimplexAdapter()
+                new BranchAndBoundSimplexAdapter(),
+                new BranchAndBoundKnapsackAdapter()
             });
         }
 
@@ -197,6 +198,7 @@ namespace LPR381Solver
                           outputWriter.ToString()
             };
 
+
             // Add the simplex tableaus (iterations) of the optimal node to the report
             foreach (double[,] tableau in result.Iterations)
             {
@@ -210,5 +212,65 @@ namespace LPR381Solver
             };
         }
     }
+
+        public sealed class BranchAndBoundKnapsackAdapter : IModelSolver
+        {
+            public string Name => AlgorithmNames.BranchAndBoundKnapsack;
+
+            public SolverExecution Solve(
+                LinearProgrammingModel model,
+                CanonicalForm canonicalForm)
+            {
+            if (model.VariableRestrictions.Any(r => r != VariableRestriction.Binary))
+            {
+                throw new AlgorithmCompatibilityException(
+                    "Knapsack requires binary variables.");
+            }
+
+            if (model.ConstraintCount != 1)
+                {
+                    throw new AlgorithmCompatibilityException(
+                        "Knapsack requires exactly one capacity constraint.");
+                }
+
+                LinearConstraint constraint =
+                    model.Constraints[0];
+
+                double[] profits =
+                    model.ObjectiveCoefficients;
+
+                double[] weights =
+                    constraint.Coefficients;
+
+                double capacity =
+                    constraint.RightHandSide;
+
+                using (var writer = new StringWriter())
+                {
+                    SimplexResult result =
+                        BranchAndBoundKnapsack.Solve(
+                            profits,
+                            weights,
+                            capacity,
+                            model.ObjectiveSense ==
+                            ObjectiveSense.Maximize,
+                            writer);
+
+                    var report =
+                        new SolverRunReport(Name)
+                        {
+                            Status = "Optimal",
+                            Summary = writer.ToString()
+                        };
+
+                    return new SolverExecution
+                    {
+                        Report = report,
+                        SimplexResult = result
+                    };
+                }
+            }
+        }
+    
 
 }

@@ -1,0 +1,39 @@
+LPR381 LINEAR & INTEGER PROGRAMMING SOLVER
+Member 1 contribution: Dewald Allers
+Generated: 2026-08-28 06:08:15
+Input file: C:\Users\rivan\OneDrive\Documents\University\LPR381-Solver-Program\LPR381Solver\LPR381Solver\TestFiles\test7_branchandboundknapsack.txt
+========================================================================
+
+ORIGINAL PROGRAMMING MODEL
+========================================================================
+max +2.000 +3.000 +3.000 +5.000 +2.000 +4.000
++11.000 +8.000 +6.000 +14.000 +10.000 +10.000 <= 40.000
+bin bin bin bin bin bin
+
+CANONICAL FORM
+========================================================================
+Maximise z = 2.000x1 + 3.000x2 + 3.000x3 + 5.000x4 + 2.000x5 + 4.000x6
+Objective row: z - 2.000x1 - 3.000x2 - 3.000x3 - 5.000x4 - 2.000x5 - 4.000x6 = 0.000
+Subject to:
+  (1) 11.000x1 + 8.000x2 + 6.000x3 + 14.000x4 + 10.000x5 + 10.000x6 + 1.000s1 = 40.000
+
+Initial basis: s1
+Non-negativity: x1 >= 0, x2 >= 0, x3 >= 0, x4 >= 0, x5 >= 0, x6 >= 0, s1 >= 0
+Discrete restrictions: x1 binary (0 or 1), x2 binary (0 or 1), x3 binary (0 or 1), x4 binary (0 or 1), x5 binary (0 or 1), x6 binary (0 or 1)
+
+
+ALGORITHM RESULT
+========================================================================
+Algorithm: Branch & Bound Knapsack
+Status: Optimal
+Node 9: complete solution, profit = 15 (new incumbent).
+
+=== Best 0/1 solution found ===
+x1 = 0
+x2 = 1
+x3 = 1
+x4 = 1
+x5 = 0
+x6 = 1
+Z = 15
+

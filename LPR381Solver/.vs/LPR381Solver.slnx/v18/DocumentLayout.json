@@ -1,10 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\",
+  "WorkspaceRootPath": "C:\\Users\\rivan\\OneDrive\\Documents\\University\\LPR381-Solver-Program\\LPR381Solver\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|c:\\users\\t.maise\\source\\repos\\lpr381-solver-program\\lpr381solver\\lpr381solver\\cuttingplaneadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|solutionrelative:lpr381solver\\cuttingplaneadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|c:\\users\\rivan\\onedrive\\documents\\university\\lpr381-solver-program\\lpr381solver\\lpr381solver\\solverintegration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|solutionrelative:lpr381solver\\solverintegration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|c:\\users\\rivan\\onedrive\\documents\\university\\lpr381-solver-program\\lpr381solver\\lpr381solver\\branchandboundknapsack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD169F2B-412B-4ADF-BBA0-2AFB13ED26AF}|LPR381Solver\\LPR381Solver.csproj|solutionrelative:lpr381solver\\branchandboundknapsack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,15 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CuttingPlaneAdapter.cs",
-              "DocumentMoniker": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\CuttingPlaneAdapter.cs",
-              "RelativeDocumentMoniker": "LPR381Solver\\CuttingPlaneAdapter.cs",
-              "ToolTip": "C:\\Users\\T.Maise\\source\\repos\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\CuttingPlaneAdapter.cs",
-              "RelativeToolTip": "LPR381Solver\\CuttingPlaneAdapter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKIAAAABAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "BranchAndBoundKnapsack.cs",
+              "DocumentMoniker": "C:\\Users\\rivan\\OneDrive\\Documents\\University\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\BranchAndBoundKnapsack.cs",
+              "RelativeDocumentMoniker": "LPR381Solver\\BranchAndBoundKnapsack.cs",
+              "ToolTip": "C:\\Users\\rivan\\OneDrive\\Documents\\University\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\BranchAndBoundKnapsack.cs",
+              "RelativeToolTip": "LPR381Solver\\BranchAndBoundKnapsack.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAO8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-27T10:10:38.264Z",
+              "WhenOpened": "2026-08-28T03:53:10.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SolverIntegration.cs",
+              "DocumentMoniker": "C:\\Users\\rivan\\OneDrive\\Documents\\University\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\SolverIntegration.cs",
+              "RelativeDocumentMoniker": "LPR381Solver\\SolverIntegration.cs",
+              "ToolTip": "C:\\Users\\rivan\\OneDrive\\Documents\\University\\LPR381-Solver-Program\\LPR381Solver\\LPR381Solver\\SolverIntegration.cs",
+              "RelativeToolTip": "LPR381Solver\\SolverIntegration.cs",
+              "ViewState": "AgIAAPQAAAAAAAAAAAAAAN8AAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-28T03:50:34.997Z",
               "EditorCaption": ""
             }
           ]

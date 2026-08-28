@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BranchAndBoundKnapsack.cs" />
     <Compile Include="RevisedPrimalSimplexAdapter.cs" />
     <Compile Include="Cuttingplane.cs" />
     <Compile Include="BranchAndBoundSimplex.cs" />
